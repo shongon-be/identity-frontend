@@ -10,7 +10,7 @@ export default function Home() {
 
   const getUserDetails = async (accessToken) => {
     const response = await fetch(
-      "http://localhost:8080/identity/users/my-info",
+      "http://localhost:8181/identity/users/my-info",
       {
         method: "GET",
         headers: {
@@ -72,7 +72,7 @@ export default function Home() {
                   mb: "40px",
                 }}
               >
-                Welcome back to Devteria, {userDetails.username} !
+                Welcome back to Identity service, {userDetails.username} !
               </Typography>
               <Box
                 sx={{
@@ -171,7 +171,7 @@ export default function Home() {
                     fontSize: 14,
                   }}
                 >
-                  {userDetails.dob}
+                  {userDetails.birthDate}
                 </Typography>
               </Box>
             </Box>

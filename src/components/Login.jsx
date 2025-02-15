@@ -10,7 +10,7 @@ import {
   Alert,
 } from "@mui/material";
 
-import GoogleIcon from "@mui/icons-material/Google";
+// import GoogleIcon from "@mui/icons-material/Google";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken, setToken } from "../services/localStorageService";
@@ -26,11 +26,11 @@ export default function Login() {
     setSnackBarOpen(false);
   };
 
-  const handleClick = () => {
-    alert(
-      "Please refer to Oauth2 series for this implemetation guidelines. https://www.youtube.com/playlist?list=PL2xsxmVse9IbweCh6QKqZhousfEWabSeq"
-    );
-  };
+  // const handleClick = () => {
+  //   alert(
+  //     "Please refer to Oauth2 series for this implemetation guidelines. https://www.youtube.com/playlist?list=PL2xsxmVse9IbweCh6QKqZhousfEWabSeq"
+  //   );
+  // };
 
   useEffect(() => {
     const accessToken = getToken();
@@ -48,7 +48,7 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:8080/identity/auth/token", {
+    fetch("http://localhost:8181/identity/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the content type to JSON
@@ -65,7 +65,7 @@ export default function Login() {
         console.log("Response body:", data);
 
         // This code is a commitment between BE and FE
-        if (data.code !== 1000) {
+        if (data.code !== 200) {
           throw new Error(data.message);
         }
 
@@ -115,7 +115,7 @@ export default function Login() {
         >
           <CardContent>
             <Typography variant="h5" component="h1" gutterBottom>
-              Welcome to Devtetia
+              Welcome to Identity service
             </Typography>
             <Box
               component="form"
@@ -161,7 +161,7 @@ export default function Login() {
             </Box>
 
             <Box display="flex" flexDirection="column" width="100%" gap="25px">
-              <Button
+              {/* <Button
                 type="button"
                 variant="contained"
                 color="secondary"
@@ -172,7 +172,7 @@ export default function Login() {
               >
                 <GoogleIcon />
                 Continue with Google
-              </Button>
+              </Button> */}
               <Button
                 type="submit"
                 variant="contained"
